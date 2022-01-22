@@ -1,0 +1,8 @@
+{
+    "name": "clicks",
+    "version": "0.1.0",
+    "description": "Clicks Implementation",
+    "scripts": {
+        "solution": "node src/index.js"
+    }
+}

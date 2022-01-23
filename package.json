@@ -1,9 +1,24 @@
 {
-    "name": "clicks",
-    "version": "0.1.0",
-    "description": "Clicks",
-    "type": "module",
-    "scripts": {
-        "solution": "NODE_OPTIONS='--experimental-specifier-resolution=node' node src/index.js"
-    }
+  "name": "clicks",
+  "version": "0.1.0",
+  "description": "Clicks",
+  "type": "module",
+  "scripts": {
+    "solution": "NODE_OPTIONS='--experimental-specifier-resolution=node' node src/index.js"
+  },
+  "dependencies": {
+    "moment": "^2.29.1"
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chasethesky79/Clicks.git"
+  },
+  "author": "Bharath",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chasethesky79/Clicks/issues"
+  },
+  "homepage": "https://github.com/chasethesky79/Clicks#readme"
 }

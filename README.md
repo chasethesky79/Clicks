@@ -7,7 +7,9 @@
 2) Library used : Used the moment.js library for dates since it provides many convenient methods to manipulate and perform computations on dates.
 
 # To run the project: (Ensure that NodeJS and npm are installed in the machine)
-Execute: 'npm run solution' at the root of the project
+1) Clone the project to any folder in machine : git clone https://github.com/chasethesky79/Clicks.git
+2) Checkout to the feature branch: git checkout clicks_implementation
+3) Execute: 'npm run solution' at the root of the project
 
 # To run the unit tests:
 Execute: 'npm run test' at the root of the project

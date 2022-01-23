@@ -11,7 +11,7 @@
 2) Checkout to the feature branch: git checkout clicks_implementation
 3) Execute: 'npm run solution' at the root of the project
 4) The output of the program is written to a file called - resultset.json in the root of the project.
-5) Also everytime the - 'npm run solution' is run, this file get overwritten with the result of the current run / execution.
+5) Also everytime the - 'npm run solution' is run, the resultset.json file gets overwritten with the result of the current run / execution.
 
 # To run the unit tests:
 Execute: 'npm run test' at the root of the project

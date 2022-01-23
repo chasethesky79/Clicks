@@ -31,29 +31,35 @@ function buildResultSet(input = []) {
     if (input.length === 0) {
         throw new Error('Invalid input, clicks array cannot be empty');
     }
-    let startTime;
+    let startOfTheHour = getStartOfTheHour(input[0]);
+    let endOfTheHour;
     let clicksRecordsForOneHourPeriod = [];
     let resultSet = [];
     const filteredList = filterInputByRecordCount(input);
-    filteredList.forEach(element => {
-       const { timestamp } = element;
-       if (!startTime) {
-           startTime = moment(timestamp, timeStampFormat); 
-           clicksRecordsForOneHourPeriod = [...clicksRecordsForOneHourPeriod, element];
-           return;
-       }
-       const currentTime = moment(timestamp, timeStampFormat);
-       const durationInHours = moment.duration(currentTime.diff(startTime)).asHours();
-       if (durationInHours <= 1) {
+    filteredList.forEach((element, index) => {
+       const { timestamp, ip } = element;
+       const current = moment(timestamp, timeStampFormat);
+       endOfTheHour = endOfTheHour || moment(startOfTheHour).add(1, 'hours').subtract(1, 'second');
+       if (current.isSameOrAfter(startOfTheHour) && current.isSameOrBefore(endOfTheHour)) {
            clicksRecordsForOneHourPeriod = [...clicksRecordsForOneHourPeriod, element];
        } else {
-           const resultSetForOneHourPeriod = buildResultSetPerOneHourPeriod(clicksRecordsForOneHourPeriod);
+           let resultSetForOneHourPeriod = buildResultSetPerOneHourPeriod(clicksRecordsForOneHourPeriod);
            resultSet = [...resultSet, resultSetForOneHourPeriod];
-           startTime = null;
-           clicksRecordsForOneHourPeriod = [];
+           startOfTheHour = getStartOfTheHour(element);
+           endOfTheHour = moment(startOfTheHour).add(1, 'hours').subtract(1, 'second');
+           clicksRecordsForOneHourPeriod = [element];
+           if (index === filteredList.length - 1) {
+                resultSet = [...resultSet, element];
+           }
        }  
     })
-    return resultSet;
+    return resultSet.flat();
+}
+
+function getStartOfTheHour(element) {
+    const { timestamp } = element;
+    const time = moment(timestamp, timeStampFormat);
+    return time.startOf('hour');
 }
 
 export default buildResultSet;

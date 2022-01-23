@@ -6,7 +6,7 @@
 4) Implementation Style: This project has been implemented this project using core javascript (ES6) features using the moment.js library
 2) Library used : Used the moment.js library for dates since it provides many convenient methods to manipulate and perform computations on dates.
 
-# To run the project:
+# To run the project: (Ensure that NodeJS and npm are installed in the machine)
 Execute: 'npm run solution' at the root of the project
 
 # To run the unit tests:

@@ -24,7 +24,7 @@ function buildResultSet(input = []) {
         const timeStampCurrVal = moment(timestamp, timeStampFormat);
         const elementByIp = acc.find(item => item.ip === ip);
         if (!elementByIp) {
-            acc = [...acc, elementByIp]
+            acc = [...acc, element]
         } else {
            const matchingIndex = acc.indexOf(elementByIp);
            const { amount : matchingElementAmt, timestamp: matchingElementTimeStamp } = elementByIp;

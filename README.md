@@ -13,3 +13,5 @@
 
 # To run the unit tests:
 Execute: 'npm run test' at the root of the project
+
+NOTE: A sample resultset output json file (resultset.json) has been included for reference. However everytime the - 'npm run solution' is run, this file get overwritten with the result of the current run / execution.

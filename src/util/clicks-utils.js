@@ -1,24 +1,18 @@
 import moment from 'moment';
 
-function filterInputByClickCount(input = [], count = 10) {
+function filterClicksByRecordCount(input = [], count = 10) {
     const clickCountMap = input.reduce((acc, curr) => {
         const { ip } = curr;
         return acc[ip] ? ++acc[ip] : acc[ip] = 1, acc
     }, {});
-    return input.reduce((acc, element) => {
-         const { ip } = element;
-         if (clickCountMap[ip] <= count) {
-             acc = [...acc, element];
-         }
-         return acc;
-    }, [])
+    return input.filter(({ ip }) => clickCountMap[ip] <= count);
 }
 function buildResultSet(input = []) {
     if (input.length === 0) {
         throw new Error('Invalid input, clicks array cannot be empty');
     }
     const timeStampFormat = 'MM/DD/YYYY HH:mm:ss';
-    const filteredList = filterInputByClickCount(input);
+    const filteredList = filterClicksByRecordCount(input);
     return filteredList.reduce((acc, element) => {
         const { ip, timestamp, amount } = element;
         const timeStampCurrVal = moment(timestamp, timeStampFormat);
@@ -37,4 +31,4 @@ function buildResultSet(input = []) {
    }, []);
 }
 
-export { filterInputByClickCount, buildResultSet }
+export default buildResultSet;

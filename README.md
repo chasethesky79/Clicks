@@ -3,7 +3,7 @@
 1) Package.json - File that contains meta data about project and required dependencies
 2) clicks-utils.js : Utility file that contains the core functions to process the input and build result set
 3) index.js - Main entry file that will run this node application
-4) Implementation Style: This project has been implemented this project using core javascript (ES6) features using the moment.js library
+4) Implementation Style: Implemented this project using core javascript (ES6) features, ES6 module feature and the moment.js library for datetime calculations.
 2) Library used : Used the moment.js library for dates since it provides many convenient methods to manipulate and perform computations on dates.
 
 # To run the project: (Ensure that NodeJS and npm are installed in the machine)

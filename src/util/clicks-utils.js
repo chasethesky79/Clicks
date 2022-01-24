@@ -2,6 +2,7 @@ import moment from 'moment';
 
 const timeStampFormat = 'MM/DD/YYYY HH:mm:ss';
 function filterInputByRecordCount(input, count = 10) {
+    // Build a map of IP vs count of IP
     const clickCountMap = input.reduce((acc, curr) => {
         const { ip } = curr;
         return acc[ip] ? ++acc[ip] : acc[ip] = 1, acc
@@ -10,6 +11,7 @@ function filterInputByRecordCount(input, count = 10) {
 }
 
 function buildResultSetPerOneHourPeriod(input = []) {
+    // Apply given business rules to determine which record goes into the result set built for a 1 hour period
     return input.reduce((acc, element) => {
         const { ip, amount } = element;
         const elementByIp = acc.find(item => item.ip === ip);
@@ -30,6 +32,8 @@ function buildResultSet(input = []) {
     if (input.length === 0) {
         throw new Error('Invalid input, clicks array cannot be empty');
     }
+    // sort input in ascending order of timestamps
+    input = input.sort((date1, date2) => moment(date1.timestamp, timeStampFormat).diff(moment(date2.timestamp, timeStampFormat))); 
     let startOfTheHour = getStartOfTheHour(input[0]);
     let endOfTheHour;
     let clicksRecordsForOneHourPeriod = [];
@@ -39,6 +43,7 @@ function buildResultSet(input = []) {
        const { timestamp } = element;
        const current = moment(timestamp, timeStampFormat);
        endOfTheHour = endOfTheHour || moment(startOfTheHour).add(1, 'hours').subtract(1, 'second');
+       // Incrementally build records for every hour period and add them to the final result set and flatten that array to get a flattened result set
        if (current.isSameOrAfter(startOfTheHour) && current.isSameOrBefore(endOfTheHour)) {
            clicksRecordsForOneHourPeriod = [...clicksRecordsForOneHourPeriod, element];
        } else {

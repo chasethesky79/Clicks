@@ -11,16 +11,14 @@ function filterInputByRecordCount(input, count = 10) {
 
 function buildResultSetPerOneHourPeriod(input = []) {
     return input.reduce((acc, element) => {
-        const { ip, timestamp, amount } = element;
-        const timeStampCurrVal = moment(timestamp, timeStampFormat);
+        const { ip, amount } = element;
         const elementByIp = acc.find(item => item.ip === ip);
         if (!elementByIp) {
             acc = [...acc, element]
         } else {
            const matchingIndex = acc.indexOf(elementByIp);
-           const { amount : matchingElementAmt, timestamp: matchingElementTimeStamp } = elementByIp;
-           const matchingElementTimeStampVal = moment(matchingElementTimeStamp, timeStampFormat);        
-           if (amount > matchingElementAmt || (amount === matchingElementAmt && timeStampCurrVal < matchingElementTimeStampVal)) {
+           const { amount : matchingElementAmt } = elementByIp;     
+           if (amount > matchingElementAmt) {
             acc[matchingIndex] = element;
         }
       }
@@ -38,7 +36,7 @@ function buildResultSet(input = []) {
     let resultSet = [];
     const filteredList = filterInputByRecordCount(input);
     filteredList.forEach((element, index) => {
-       const { timestamp, ip } = element;
+       const { timestamp } = element;
        const current = moment(timestamp, timeStampFormat);
        endOfTheHour = endOfTheHour || moment(startOfTheHour).add(1, 'hours').subtract(1, 'second');
        if (current.isSameOrAfter(startOfTheHour) && current.isSameOrBefore(endOfTheHour)) {

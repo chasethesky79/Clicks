@@ -8,6 +8,7 @@ function filterInputByRecordCount(input, count = 10) {
     }, {});
     return input.filter(({ ip }) => clickCountMap[ip] <= count);
 }
+
 function buildResultSetPerOneHourPeriod(input = []) {
     return input.reduce((acc, element) => {
         const { ip, timestamp, amount } = element;
@@ -62,4 +63,4 @@ function getStartOfTheHour(element) {
     return time.startOf('hour');
 }
 
-export default buildResultSet;
+export { filterInputByRecordCount, buildResultSetPerOneHourPeriod, buildResultSet }

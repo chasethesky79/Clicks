@@ -1,4 +1,4 @@
-import buildResultSet from './util/clicks-utils';
+import { buildResultSet } from './util/clicks-utils';
 import clicks from './resources/clicks.json';
 import * as fs from 'fs';
 

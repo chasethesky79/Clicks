@@ -4,7 +4,7 @@
 2) clicks-utils.js : Utility file that contains the core logic to process the input and build result set
 3) index.js - Main entry file that will run this node application
 4) Implementation Style: Implemented this project using core javascript (ES6) features, ES6 module feature and the moment.js library for datetime calculations.
-2) Library used : Used the moment.js library for dates since it provides many convenient methods to manipulate and perform computations on dates.
+2) Libraries used : moment.js (for datetime calculations), jest (for unit tests)
 
 # To run the project: (Ensure that NodeJS and npm are installed in the machine)
 1) Clone the project to any folder in machine : git clone https://github.com/chasethesky79/Clicks.git

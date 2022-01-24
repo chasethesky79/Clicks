@@ -4,9 +4,11 @@
   "description": "Clicks",
   "type": "module",
   "scripts": {
-    "solution": "NODE_OPTIONS='--experimental-specifier-resolution=node' node src/index.js"
+    "solution": "NODE_OPTIONS='--experimental-specifier-resolution=node' node src/index.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
   },
   "dependencies": {
+    "jest": "^27.4.7",
     "moment": "^2.29.1"
   },
   "main": "index.js",

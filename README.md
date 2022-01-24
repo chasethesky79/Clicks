@@ -20,6 +20,7 @@
 7) Also everytime the - 'npm run solution' is run, the resultset.json file gets overwritten with the result of the current run / execution.
 
 # To run the unit tests:
-Execute: 'npm run test' at the root of the project
+Run: 'npm run test' at the root of the project which will run all the jest unit tests and produce console output of the test result. Tests have been added to cover
+pretty much all possible positive scenarios and error condition(s).
 
 NOTE: A sample resultset output json file (resultset.json) has been included for reference. 

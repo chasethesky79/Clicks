@@ -60,6 +60,7 @@ function buildResultSet(input = []) {
     return resultSet.flat();
 }
 
+// Calculate start of the hour for every 1 hour period
 function getStartOfTheHour(element) {
     const { timestamp } = element;
     const time = moment(timestamp, timeStampFormat);
